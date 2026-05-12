@@ -7,11 +7,7 @@ client = OpenAI(
  api_key = st.secrets["key"]
 )
 
-st.session_state["s"] = {}
-
-#sauces = ["ketchup", "mustard", "mayonaise", "barbecue sauce", "hot sauce"]
 sauces = ["Ketchup", "Mustard", "Mayo", "BBQ Sauce", "Hot Sauce"]
-st.session_state["s"] = {}
 
 def print_article(article):
     st.write("HISTORY")
@@ -29,7 +25,7 @@ st.write("Welcome to the saucy encyclopedia")
 st.write("Please wait while we write the encyclopedia articles....")
 
 
-if st.session_state["s"] == {}:
+if not "s" in st.session_state:
 
     for sauce in sauces:
         system_prompt = """
