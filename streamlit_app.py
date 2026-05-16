@@ -27,6 +27,8 @@ st.write("Please wait while we write the encyclopedia articles....")
 
 if not "s" in st.session_state:
 
+    st.session_state["s"] = {}
+
     for sauce in sauces:
         system_prompt = """
         sauce = {sauce}
@@ -57,16 +59,15 @@ if not "s" in st.session_state:
 
 # ketchup, mustard, mayo, BBQ sauce, hot sauce
 
-while True:
-
-    choice = st.selectbox("What sauce would you like to know about?",
-             [
-                 "Ketchup",
-                 "Mustard",
-                 "Mayo",
-                 "BBQ Sauce",
-                 "Hot Sauce"
-             ] 
+choice = st.selectbox("What sauce would you like to know about?",
+         [
+             "Ketchup",
+             "Mustard",
+             "Mayo",
+             "BBQ Sauce",
+             "Hot Sauce"
+         ] 
 )
-    st.write(choice)
-    print_article(st.session_state["s"][choice])
+
+st.write(choice)
+print_article(st.session_state["s"][choice])
